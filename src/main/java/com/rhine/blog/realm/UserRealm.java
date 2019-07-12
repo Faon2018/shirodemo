@@ -46,9 +46,9 @@ public class UserRealm extends AuthorizingRealm {
                 for (PermissionBean permission : permissions){
                     premissionCollection.add(permission.getUrl());
                 }
-                info.addStringPermissions(premissionCollection);
+                info.addStringPermissions(premissionCollection);//加入权限信息
             }
-            info.addRoles(rolesCollection);
+            info.addRoles(rolesCollection);//加入角色信息
             return info;
         }
         return null;
@@ -71,17 +71,19 @@ public class UserRealm extends AuthorizingRealm {
 
         ByteSource credentialsSalt = ByteSource.Util.bytes(bean.getName());
 
-        return new SimpleAuthenticationInfo(bean, bean.getPassword(),
-                credentialsSalt, getName());
+        return new SimpleAuthenticationInfo(bean, bean.getPassword(),credentialsSalt, getName());
     }
 
     public static void main(String[] args){
         String hashAlgorithName = "MD5";
-        String password = "123456";
+        String password = "root";
         //加密次数
         int hashIterations = 1024;
-        ByteSource credentialsSalt = ByteSource.Util.bytes("vip");
+        ByteSource credentialsSalt = ByteSource.Util.bytes("root");//28e5ea71eb6600afb02132dcf27b8e75
+//        ByteSource credentialsSalt = ByteSource.Util.bytes("vip");
         Object obj = new SimpleHash(hashAlgorithName, password, credentialsSalt, hashIterations);
         System.out.println(obj);
+
+
     }
 }

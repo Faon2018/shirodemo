@@ -7,4 +7,8 @@ public interface UserMapper {
     UserBean findByName(String name);
 
     UserBean findById(String id);
+
+    UserBean  getBigId();
+
+    Boolean  add(UserBean user);
 }

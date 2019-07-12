@@ -61,6 +61,7 @@ public class ShiroConfig {
         Map<String, String> filterMap = new LinkedHashMap<>();
 
         filterMap.put("/login","anon");
+        filterMap.put("/register","anon");//注册无需认证
         filterMap.put("/user/index","authc");
         filterMap.put("/vip/index","roles[vip]");
         filterMap.put("/druid/**", "anon");

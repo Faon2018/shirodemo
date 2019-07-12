@@ -34,4 +34,12 @@
         AND role.id = role_permission.role_id
         AND role_permission.permission_id = permission.id
     </select>
+
+    <insert id="add"  parameterType="UserBean">
+        insert  into  user(id,`name`,password) values (#{id},#{name},#{password})
+    </insert>
+
+    <select id="getBigId"  resultType="UserBean">
+        select  *  from  user  order by  id  desc  limit 1
+    </select>
 </mapper>

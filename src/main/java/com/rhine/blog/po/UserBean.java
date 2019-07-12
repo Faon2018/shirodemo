@@ -14,6 +14,15 @@ public class UserBean implements Serializable {
     private String password;
     private Set<RoleBean> roles = new HashSet<>();
 
+    public  UserBean(){
+        super();
+    }
+    public UserBean(String id,String name, String password) {
+        this.id=id;
+        this.name = name;
+        this.password = password;
+    }
+
     public String getId() {
         return id;
     }
@@ -44,5 +53,14 @@ public class UserBean implements Serializable {
 
     public void setRole(Set<RoleBean> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "UserBean{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

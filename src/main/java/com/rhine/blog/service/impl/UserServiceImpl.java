@@ -18,8 +18,30 @@ public class UserServiceImpl implements UserService {
         UserBean bean = userMapper.findByName(name);
         if (bean != null) {
             // 查询用户信息、角色、权限
-            bean = userMapper.findById(bean.getId());
+          UserBean  beans = findById(bean.getId());
+          if (beans != null){//新注册的用户没有角色和权限，返回用户信息，不能返回空
+              bean=beans;
+          }
         }
         return bean;
     }
+
+    @Override
+    public UserBean findById(String id) {
+        return  userMapper.findById(id);
+    }
+
+    @Override
+    public String addUser(UserBean user) {
+        if (userMapper.add(user)){
+            return  getBigId();
+        }
+        return  "0";
+
+    }
+
+    public  String getBigId(){
+        return  userMapper.getBigId().getId();
+    }
+
 }
